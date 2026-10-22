@@ -1,0 +1,51 @@
+/*
+    build.gradle: 빌드 설계도
+                   Gradle 빌드 도구가 이 파일의 코드를 읽음
+                   Groovy 언어를 사용함
+*/
+
+// 프로젝트에 사용할 플러그인들을 자동으로 내려받아서 관리
+plugins {
+    // 자바 플러그인: 컴파일, 테스트 실행, jar 생성 기능
+    id 'java'
+    // 스프링부트 프레임워크 전용 기능
+    id 'org.springframework.boot' version '4.0.1'
+    // 라이브러리 버전 자동 갱신 프레임워크
+    // 스프링부트가 권장하는 버전 조합을 자동 적용
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.shin'
+version = '0.0.1-SNAPSHOT'
+description = 'springboot-developers'
+
+java {
+    toolchain {
+        // 컴파일과 실행에 쓸 jdk 버전
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+repositories {
+    // 라이브러리를 내려받을 공개 저장소
+    mavenCentral()
+}
+
+dependencies {
+    // 스프링부트 라이브러리. 내장 톰캣, Spring MVC, Jackson이 포함됨
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // 스프링부트 라이브러리. 실행 기반
+    implementation 'org.springframework.boot:spring-boot-starter'
+
+    // 스프링부트 라이브러리. 테스트 관련 도구
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // 테스트 실행 파일을 찾도록 도와주는 라이브러리
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    // 테스트를 JUnit5 방식으로 실행
+    useJUnitPlatform()
+}
