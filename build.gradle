@@ -32,6 +32,12 @@ repositories {
 }
 
 dependencies {
+    // 스프링부트 라이브러리. JPA, Hibernate 등 DB와 관련된 기능 포함
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // H2 데이터베이스 라이브러리. 프로그램 안에서 동작하는 DB 제공
+    runtimeOnly 'com.h2database:h2'
+
     // 스프링부트 라이브러리. 내장 톰캣, Spring MVC, Jackson이 포함됨
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
@@ -40,9 +46,14 @@ dependencies {
 
     // 스프링부트 라이브러리. 테스트 관련 도구
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
 
     // 테스트 실행 파일을 찾도록 도와주는 라이브러리
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // 롬복 라이브러리. getter, setter 등 여러 어노테이션 기능 제공
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {
