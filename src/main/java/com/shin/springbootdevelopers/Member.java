@@ -29,4 +29,9 @@ public class Member {
     public Member(String name){
         this.name = name;
     }
+
+    // 매개변수를 통해 이름을 변경하는 메소드
+    public void changeName(String name){
+        this.name = name;
+    }
 }
