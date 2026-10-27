@@ -35,6 +35,9 @@ dependencies {
     // 스프링부트 라이브러리. JPA, Hibernate 등 DB와 관련된 기능 포함
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
+    // JPA 저장소 테스트 기능
+    testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
+
     // H2 데이터베이스 라이브러리. 프로그램 안에서 동작하는 DB 제공
     runtimeOnly 'com.h2database:h2'
 
@@ -54,6 +57,7 @@ dependencies {
     // 롬복 라이브러리. getter, setter 등 여러 어노테이션 기능 제공
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
 }
 
 tasks.named('test') {
